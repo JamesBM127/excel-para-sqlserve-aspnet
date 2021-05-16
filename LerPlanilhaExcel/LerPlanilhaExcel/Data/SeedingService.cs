@@ -18,25 +18,28 @@ namespace LerPlanilhaExcel.Data
 
         public void Seed()
         {
-            if (_context.Products.Any())
+            if (_context.People.Any())
             {
                 return;
             }
 
-            var xls = new XLWorkbook(@"C:\Users\James\Desktop\LerExcel\ExemploExcel.xlsx");
-            var planilha = xls.Worksheets.First(w => w.Name == "Plan1");
+            var xls = new XLWorkbook(@"C:\Users\James\Desktop\excel-para-sqlserve-aspnet\ExemploExcel.xlsx");
+            var planilha = xls.Worksheets.First(w => w.Name == "Planilha1");
             var totalLinhas = planilha.Rows().Count();
 
             // primeira linha é o cabecalho
             for (int l = 2; l <= totalLinhas; l++)
             {
+                string nome = planilha.Cell($"A{l}").Value.ToString();
+                string apelido = planilha.Cell($"B{l}").Value.ToString();
 
-                    int codigo = int.Parse(planilha.Cell($"A{l}").Value.ToString());
-                    string descricao = planilha.Cell($"B{l}").Value.ToString();
-                    double preco = double.Parse(planilha.Cell($"C{l}").Value.ToString());
-                    Products products = new Products(codigo, descricao, preco);
-                    _context.Products.Add(products);
+                Department department = _context.Departments.FirstOrDefault();
 
+                Person person = new Person(nome, apelido, "", Models.Enums.PaymentStatus.Pago, department);
+
+                _context.People.Add(person);
+
+                Department ortorrinolaringologista = new Department();
 
             }
             _context.SaveChanges();

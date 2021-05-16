@@ -11,5 +11,7 @@ namespace LerPlanilhaExcel.Data
         }
 
         public DbSet<Products> Products { get; set; }
+        public DbSet<Person> People { get; set; }
+        public DbSet<Department> Departments { get; set; }
     }
 }
