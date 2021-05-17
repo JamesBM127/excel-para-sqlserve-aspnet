@@ -3,14 +3,16 @@ using LerPlanilhaExcel.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace LerPlanilhaExcel.Migrations
 {
     [DbContext(typeof(TesteContext))]
-    partial class TesteContextModelSnapshot : ModelSnapshot
+    [Migration("20210517212643_NewProject")]
+    partial class NewProject
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

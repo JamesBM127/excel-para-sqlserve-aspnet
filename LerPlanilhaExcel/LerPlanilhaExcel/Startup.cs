@@ -27,7 +27,7 @@ namespace LerPlanilhaExcel
             services.AddControllersWithViews();
 
             services.AddDbContext<TesteContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DevelopmentConnection")));
+                options.UseSqlServer(Configuration.GetConnectionString("ProductionConnection")));
 
             services.AddScoped<SeedingService>();
         }
